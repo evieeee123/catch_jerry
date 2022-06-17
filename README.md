@@ -4,7 +4,7 @@ Background
 
 Whack a Mole contains several holes in the board. The mole will show up on different holes randomly. The player will get points once the player clicks on the mole. Different kinds of moles have different points. Each round of the game lasts for 30 seconds. There are two ways to trigger the game over. On the one hand, game over when time's over. On the other hand, game over if the player clicks the bomb.
 
-![wireframe](https://github.com/evieeee123/whack_mole/blob/main/wireframe.png?raw=true）
+![wireframe](https://github.com/evieeee123/whack_mole/blob/main/img/wireframe.png）
 
 Functionality & MVPs
 
