@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./dist/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    
+    <title>Catch Jerry</title>
+</head>
+
+
+<!-- <style>
+    canvas {
+        border: 5px solid #01043c;
+        background-color: #01043c;
+        width: 1000px;
+        height: 650px;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+</style> -->
+
+
+<body>
+
+    <h1>CATCH JERRY</h1>
+
+    <div class="button-bar">
+        <button class='start-button'>Play Now</button>
+        <img src="./img/music_off.png" alt="music_on" id="icon">
+    </div>
+
+    <audio loop src="./audio/bground-music.mp3" id="background_music" type="audio/mp3"></audio>
+
+
+    <canvas id="game-canvas" width="900" height="500">
+    </canvas>
+    
+    <div class="cursor"></div>
+
+    <script src="./dist/main.js"></script>
+    
+</body>
+
+</html>
