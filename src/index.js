@@ -8,6 +8,16 @@ const canvas = document.getElementById('game-canvas');
 const ctx = canvas.getContext('2d');
 canvas.width = 900;
 canvas.heigth = 500;
+ctx.fillStyle = '#fed9b7';
+ctx.fillRect(0, 0, 900, 500);
+ctx.fillStyle = 'black';
+ctx.font = '40px Indie Flower, cursive';
+ctx.fillText('RULES', 380, 90);
+ctx.font = '30px Indie Flower, cursive';
+ctx.fillText('Click Jerry to catch it!', 310, 200);
+ctx.fillText('The time of game is 20s', 300, 300);
+ctx.fillText('Each Jerry you catch can get 1 point and 1 more second', 120, 400)
+
 
 let score = 0;
 let time = 20;
@@ -37,17 +47,16 @@ function timerImg(){
 
 const timer = document.querySelector('.start-button');
 timer.addEventListener('click', () => {
-    const interval = setInterval(() => {
+    setInterval(() => {
         time--;
-        if(time < 0){
+        if(time <= 0){
             isGameover = true;
             // gameOver();
             // console.log("1", gameOver())
             // stop();
-            time = 20;
+            // time = 20;
         }
 }, 1000);
-
 
 
     function stop(){
@@ -231,6 +240,9 @@ function handleJerry(){
 
 }
 
+    timer.addEventListener('click', () => {
+            window.location.reload()
+        })
 
 // Animation
 function animate() {
@@ -255,7 +267,9 @@ function animate() {
         ctx.fillStyle = 'brown';
         ctx.fillText('Game Over', 300, 200);
         ctx.fillText('Your score: ' + score, 300, 260);
-
+        // timer.addEventListener('click', () => {
+        //     window.location.reload()
+        // })
     }
 }
 
