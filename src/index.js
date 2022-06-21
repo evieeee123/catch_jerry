@@ -11,7 +11,8 @@ canvas.heigth = 500;
 
 let score = 0;
 let time = 20;
-let gameFrame = 130;
+let gameFrame = 110;
+let isGameover = false;
 ctx.font = '55px Indie Flower, cursive';
 
 // add background img into canvas
@@ -39,16 +40,29 @@ timer.addEventListener('click', () => {
     const interval = setInterval(() => {
         time--;
         if(time < 0){
-            stop();
+            isGameover = true;
+            // gameOver();
+            // console.log("1", gameOver())
+            // stop();
             time = 20;
         }
 }, 1000);
 
+
+
     function stop(){
         clearInterval(interval);
-        alert('Game Over: your score is ' + score)
+        // alert('Game Over: your score is ' + score)
     }
 
+    // function gameOver() {
+    //     ctx.fillStyle = 'brown';
+    //     ctx.fillText('Game Over', 300, 200);
+    //     ctx.fillText('Your score: ' + score, 300, 260);
+    //     // isGameover = true;
+    // }
+    
+    // console.log("2", gameOver())
 
 
 // start point tom
@@ -95,10 +109,10 @@ class Player {
         this.angle = theta;
         if (mouse.x !== this.x) {
             // dx/20: the number use to control the movement speed
-            this.x -= dx/18;
+            this.x -= dx/10;
         }
         if (mouse.y !== this.y){
-            this.y -= dy/18;
+            this.y -= dy/10;
         }
     }
 
@@ -150,7 +164,6 @@ class Jerry {
         // let jerry show up from right
         this.x = canvas.width + Math.random() * canvas.width;
         this.y = Math.random() * canvas.height + 90;
-        console.log(this.y)
         this.radius = 40;
         this.speed = Math.random() * 8 + 3;
         // keep track of distance between each individual jerry and tom (trigger the score add up when Tom hit Jerry)
@@ -186,10 +199,9 @@ catchJerry.src = './audio/catch-jerry.mp3'
 
 function handleJerry(){
     // run this code every 130 frames
-    if (gameFrame % 130 === 0){
+    if (gameFrame % 110 === 0){
         // each 130 frame show up a jerry
         jerryArr.push(new Jerry());
-        console.log(jerryArr.length);
     }
     for(let i = 0; i < jerryArr.length; i++){
         // iterate through the jerry and draw one by one
@@ -207,6 +219,7 @@ function handleJerry(){
                     // play the sound
                     catchJerry.play();
                     score++;
+                    time += 1;
                     ctx.drawImage(jerry0, jerryArr[i].x, jerryArr[i].y, 65, 65)
                     jerryArr[i].counted = true;
                     // remove jerry once be catched
@@ -217,6 +230,7 @@ function handleJerry(){
     }
 
 }
+
 
 // Animation
 function animate() {
@@ -235,7 +249,14 @@ function animate() {
     ctx.fillText(time, 825, 60)
     gameFrame++;
     // create a loop; animate another frame at the next repaint
-    window.requestAnimationFrame(animate);
+    if(!isGameover){
+        requestAnimationFrame(animate);
+    } else {
+        ctx.fillStyle = 'brown';
+        ctx.fillText('Game Over', 300, 200);
+        ctx.fillText('Your score: ' + score, 300, 260);
+
+    }
 }
 
 animate();
