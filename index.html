@@ -19,15 +19,23 @@
     <h1>CATCH JERRY</h1>
 
     <div class="button-bar">
-        <button class='start-button'>Play Now</button>
-        <img src="./img/music_off.png" alt="music_on" id="icon">
+        <div class="left-icon">
+            <img src="./img/rules.png" alt="rules" id="first-icon">
+            <img src="./img/score-icon.png" alt="scores">
+        </div>
+
+        <div>
+            <button class='start-button'>Play Now</button>
+        </div>
+        <div>
+            <img src="./img/music_off.png" alt="music_on" id="icon">
+        </div>
     </div>
 
     <audio loop src="./audio/bground-music.mp3" id="background_music" type="audio/mp3"></audio>
 
 
-    <canvas id="game-canvas" width="900" height="500">
-    </canvas>
+    <canvas id="game-canvas" width="900" height="500"></canvas>
     
     <div class="cursor"></div>
 
