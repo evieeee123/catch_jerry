@@ -47,28 +47,28 @@ function timerImg(){
 
 const timer = document.querySelector('.start-button');
 timer.addEventListener('click', () => {
-    setInterval(() => {
+    let interval = setInterval(() => {
         time--;
+        console.log(time)
         if(time <= 0){
             isGameover = true;
             // gameOver();
+            console.log(isGameover);
             // console.log("1", gameOver())
             // stop();
             // time = 20;
         }
-}, 1000);
-
-
+    }, 1000);
+    
+    
     function stop(){
         clearInterval(interval);
         // alert('Game Over: your score is ' + score)
     }
-
+    
     // function gameOver() {
-    //     ctx.fillStyle = 'brown';
-    //     ctx.fillText('Game Over', 300, 200);
-    //     ctx.fillText('Your score: ' + score, 300, 260);
     //     // isGameover = true;
+    //     stop();
     // }
     
     // console.log("2", gameOver())
@@ -173,7 +173,7 @@ class Jerry {
         // let jerry show up from right
         this.x = canvas.width + Math.random() * canvas.width;
         this.y = Math.random() * canvas.height + 90;
-        this.radius = 40;
+        this.radius = 35;
         this.speed = Math.random() * 8 + 3;
         // keep track of distance between each individual jerry and tom (trigger the score add up when Tom hit Jerry)
         this.distance;
@@ -206,6 +206,7 @@ class Jerry {
 const catchJerry = document.createElement('audio');
 catchJerry.src = './audio/catch-jerry.mp3'
 
+
 function handleJerry(){
     // run this code every 130 frames
     if (gameFrame % 110 === 0){
@@ -222,7 +223,7 @@ function handleJerry(){
             jerryArr.splice(i, 1);
             i--;
             // check the distance between Tom and jerry
-        } else if (jerryArr[i] && jerryArr[i].distance < jerryArr[i].radius + player.radius){
+        } else if (jerryArr[i].distance < jerryArr[i].radius + player.radius){
             // make every jerry only count once
                 if (!jerryArr[i].counted){
                     // play the sound
@@ -240,9 +241,69 @@ function handleJerry(){
 
 }
 
-    timer.addEventListener('click', () => {
-            window.location.reload()
-        })
+
+// dog
+const dog = new Image();
+dog.src = './img/dog.png';
+
+const dogArr = [];
+
+class Dog {
+    constructor() {
+        // let dog show up from left
+        this.x = 0;
+        this.y = Math.random() * canvas.height;
+        this.radius = 30;
+        this.speed = Math.random() * 3 + 1;
+        // keep track of distance between each individual dog and tom (trigger the score add up when Tom hit dog)
+        this.distance;
+    }
+    update() {
+        // move jerry from left to right and make dog show up with different speed
+        this.x += this.speed;
+        // calculate distance between Tom and dog
+        const dx = this.x - player.x;
+        const dy = this.y - player.y;
+        this.distance = Math.sqrt(dx * dx + dy * dy)
+    }
+    draw() {
+        ctx.drawImage(dog, this.x - 28, this.y - 68, 80, 135);
+    }
+}
+const catchDog = document.createElement('audio');
+    catchDog.src = './audio/dog-sound.mp3'
+
+function handleDog() {
+    // run this code every 130 frames
+    if (gameFrame % 200 === 0) {
+        // each 130 frame show up a jerry
+        dogArr.push(new Dog());
+    }
+    for (let i = 0; i < dogArr.length; i++) {
+        // iterate through the jerry and draw one by one
+        dogArr[i].update();
+        dogArr[i].draw();
+        // when dog run out of the canvas and tom didn't catch it do (also prevent dog disappear early when hit the boarder):
+        if (dogArr[i].x < 0 - dogArr[i].radius) {
+            // remove that jerry from the array
+            dogArr.splice(i, 1);
+            i--;
+            // check the distance between Tom and jerry
+        } else if (dogArr[i].distance < dogArr[i].radius + player.radius) {
+            // make every jerry only count once
+                // play the sound
+                catchDog.play();
+                // remove jerry once be catched
+                isGameover = true;
+        }
+    }
+}
+
+
+// for play button to reload the page
+timer.addEventListener('click', () => {
+        window.location.reload();
+    })
 
 // Animation
 function animate() {
@@ -252,6 +313,7 @@ function animate() {
     scoreImg();
     timerImg();
     handleJerry();
+    handleDog();
     player.update();
     player.draw();
     // score style
@@ -261,16 +323,17 @@ function animate() {
     ctx.fillText(time, 825, 60)
     gameFrame++;
     // create a loop; animate another frame at the next repaint
-    if(!isGameover){
+    if(isGameover === false){
         requestAnimationFrame(animate);
-    } else {
+        console.log("not over")
+    } else{
+        cancelAnimationFrame(animate);
         ctx.fillStyle = 'brown';
         ctx.fillText('Game Over', 300, 200);
         ctx.fillText('Your score: ' + score, 300, 260);
-        // timer.addEventListener('click', () => {
-        //     window.location.reload()
-        // })
+        stop();
     }
+    
 }
 
 animate();
