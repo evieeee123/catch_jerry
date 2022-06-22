@@ -20,12 +20,21 @@
 
     <div class="button-bar">
         <div class="left-icon">
-            <img src="./img/rules.png" alt="rules" id="first-icon">
+            <img src="./img/rules.png" alt="rules" id="first-icon" data-window1-target="#window1">
+            <div class="window1" id="window1">
+                <div class="window1-header">
+                    <div class="title">RULES</div>
+                    <button data-close-button class="close-button">&times;</button>
+                </div>
+                <div class="window1-body">so many rules so many rules so many rules so many rules so many rules so many rules so many rules so many rules</div>
+            </div>
+            <div id="overlay"></div>
             <img src="./img/score-icon.png" alt="scores">
         </div>
 
         <div>
             <button class='start-button'>Play Now</button>
+            <!-- <input type="text" name="username" value="username" id="username"> -->
         </div>
         <div>
             <img src="./img/music_off.png" alt="music_on" id="icon">
