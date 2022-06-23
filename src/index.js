@@ -227,7 +227,7 @@ window.addEventListener('mouseup', () => {
 let bgMusic = document.getElementById('background_music');
 let icon = document.getElementById('music-icon');
 
-icon.onclick = function (){
+icon.addEventListener('click', () => {
     if (bgMusic.paused){
         bgMusic.play();
         icon.src = './img/music_on.png'
@@ -235,5 +235,9 @@ icon.onclick = function (){
         bgMusic.pause();
         icon.src = './img/music_off.png'
     }
-}
+
+})
+
+// icon.onclick = function (){
+// }
 
