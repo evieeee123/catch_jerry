@@ -11,16 +11,27 @@ canvas.width = 900;
 canvas.heigth = 500;
 ctx.fillStyle = '#fed9b7';
 ctx.fillRect(0, 0, 900, 500);
-ctx.fillStyle = 'black';
-ctx.font = '40px Indie Flower, cursive';
-ctx.fillText('RULES', 380, 90);
+
+
 ctx.font = '30px Indie Flower, cursive';
-ctx.fillText('Click Jerry to catch it!', 310, 200);
-ctx.fillText('The time of game is 20s', 300, 300);
-ctx.fillText('Each Jerry you catch can get 1 point and 1 more second', 120, 400)
+ctx.fillStyle = 'black';
+ctx.fillText("Click 'START' to play the game" , 30, 90);
+ctx.fillText('Click the question mark icon to learn the rules', 30, 190);
+ctx.fillText('Click the sound icon to turn on/off the background music', 30, 290);
+ctx.fillText('Click github and linkedin to learn more about me', 30, 390)
+
 
 
 let score = 0;
+let highScore = 0;
+// save key for local storage of score
+let saveHighScore = 'highestscore';
+let highScoreStr = localStorage.getItem(saveHighScore);
+if (highScoreStr === null){
+    highScore;
+}else {
+    highScore = parseInt(highScoreStr);
+}
 let time = 20;
 let gameFrame = 110;
 let isGameover = false;
@@ -34,11 +45,13 @@ function addImageToCanvas(){
     ctx.drawImage(background, 0, 0, 900, 500);
 }
 
+
 function scoreImg(){
     const img = new Image();
     img.src = './img/catch_jerry.gif';
     ctx.drawImage(img, 10, 5, 40, 50)
 }
+
 
 function timerImg(){
     const timer = new Image();
@@ -46,7 +59,7 @@ function timerImg(){
     ctx.drawImage(timer, 815, 13, 70, 70)
 }
 
-const timer = document.querySelector('.start-button');
+const timer = document.querySelector('#start-button');
 timer.addEventListener('click', () => {
     let interval = setInterval(() => {
         time--;
@@ -185,6 +198,7 @@ function animate() {
     // create a loop; animate another frame at the next repaint
     if(isGameover === false){
         requestAnimationFrame(animate);
+        console.log("runing")
     } else{
         cancelAnimationFrame(animate);
         ctx.fillStyle = 'brown';
@@ -193,6 +207,13 @@ function animate() {
         stop();
     }
     
+    if (score > highScore){
+        highScore = score;
+        localStorage.setItem(saveHighScore, highScore)
+    }
+
+    ctx.fillStyle = 'brown'
+    ctx.fillText('BEST: ' + highScore, 350, 46);
 }
 
 animate();
@@ -216,7 +237,7 @@ window.addEventListener('mouseup', () => {
 
 
 let bgMusic = document.getElementById('background_music');
-let icon = document.getElementById('icon');
+let icon = document.getElementById('music-icon');
 
 icon.onclick = function (){
     if (bgMusic.paused){
@@ -228,41 +249,3 @@ icon.onclick = function (){
     }
 }
 
-
-// pop out window1
-const openWindow1Button = document.querySelectorAll('[data-window1-target]')
-const closeWindow1Button = document.querySelectorAll('[data-close-button]')
-const overlay = document.getElementById('overlay')
-
-openWindow1Button.forEach(button => {
-    button.addEventListener('click', () => {
-        const window1 = document.querySelector(button.dataset.window1Target)
-        openWindow1(window1)
-    })
-})
-
-overlay.addEventListener('click', () => {
-    const windows1 = document.querySelectorAll('.window1.active')
-    windows1.forEach(window1 => {
-        closeWindow1(window1)
-    })
-})
-
-closeWindow1Button.forEach(button => {
-    button.addEventListener('click', () => {
-        const window1 = button.closest('.window1')
-        closeWindow1(window1)
-    })
-})
-
-function openWindow1(window1) {
-    if (window1 === null) return
-    window1.classList.add('active')
-    overlay.classList.add('active')
-}
-
-function closeWindow1(window1) {
-    if (window1 === null) return
-    window1.classList.remove('active')
-    overlay.classList.remove('active')
-}

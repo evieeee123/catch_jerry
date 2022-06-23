@@ -1,6 +1,70 @@
-/*!***********************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/otherStyling.css ***!
-  \***********************************************************************************************************/
+/*!*****************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/window.css ***!
+  \*****************************************************************************************************/
+.window1 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    border: #ce9206 2.5px solid;
+    border-radius: 10px;
+    z-index: 10;
+    width: 700px;
+    max-width: 80%;
+    background-image: url('../img/window1.jpeg');
+    background-size: 100% 100%;
+}
+
+.window1.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.window1-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    align-items: center;
+    border-bottom: #ce9206 2.5px solid;
+}
+
+.title {
+    font-size: 30px;
+    font-family: 'Indie Flower', cursive;
+    font-weight: bold;
+}
+
+.close-button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.window1-body {
+    font-size: 25px;
+    font-family: 'Indie Flower', cursive;
+    padding: 8px;
+}
+
+#overlay {
+    position: fixed;
+    transition: 200ms ease-in-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, .5);
+    pointer-events: none;
+}
+
+#overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
 
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
@@ -8,7 +72,6 @@
 body {
   cursor: none;
   height: 100%;
-  width: 100%;
   background-image: url("../img/background.jpeg");
   background-position: center;
 }
@@ -36,10 +99,11 @@ h1 {
 .button-bar {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   margin-left: 18.5%;
   margin-right: 18.5%;
   margin-bottom: 20px;
-  justify-content: space-between;
 }
 
 .left-icon {
@@ -50,16 +114,17 @@ h1 {
 }
 
 #first-icon {
-  margin-right: 80%;
+  margin-right: 50%;
+  width: 45px;
+  height: 45px;
 }
 
-#username {
-  width: 100px;
-  height: 20px;
-  background-color: #d9dbfa;
+.middle {
+  height: 45px;
+  margin-left: 20%;
 }
 
-.start-button {
+#start-button {
   color: white;
   font-family: "Indie Flower", cursive;
   background-color: rgb(2, 2, 96);
@@ -68,6 +133,13 @@ h1 {
   font-size: 25px;
   font-weight: 1000;
   border: #a6aaeb 3px solid;
+}
+
+.right-icon {
+  display: flex;
+  flex-direction: row;
+  width: 45px;
+  height: 45px;
 }
 
 .cursor {
@@ -93,72 +165,19 @@ h1 {
   transform: translate(-60%, -42%) rotate(-20deg);
 }
 
-#icon {
+#music-icon {
+  display: flex;
   height: 40px;
   width: 40px;
 }
 
-.window1 {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  transition: 200ms ease-in-out;
-  border: #ce9206 2.5px solid;
-  border-radius: 10px;
-  z-index: 10;
-  width: 500px;
-  max-width: 80%;
-  background-image: url("../img/window1.jpeg");
-  background-size: 100% 100%;
+#git-icon {
+  width: 45px;
+  height: 45px;
+  margin-left: 200%;
 }
 
-.window1.active {
-  transform: translate(-50%, -50%) scale(1);
-}
-
-.window1-header {
-  display: flex;
-  justify-content: space-between;
-  padding: 8px;
-  align-items: center;
-  border-bottom: #ce9206 2.5px solid;
-}
-
-.title {
-  font-size: 30px;
-  font-family: "Indie Flower", cursive;
-  font-weight: bold;
-}
-
-.close-button {
-  cursor: pointer;
-  border: none;
-  outline: none;
-  background: none;
-  font-size: 30px;
-  font-weight: bold;
-}
-
-.window1-body {
-  font-size: 20px;
-  font-family: "Indie Flower", cursive;
-  padding: 8px;
-}
-
-#overlay {
-  position: fixed;
-  transition: 200ms ease-in-out;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  opacity: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  pointer-events: none;
-}
-
-#overlay.active {
-  opacity: 1;
-  pointer-events: all;
+#last-icon {
+  width: 45px;
+  height: 45px;
 }
