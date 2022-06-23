@@ -1,6 +1,6 @@
-# <a href="https://evieeee123.github.io/catch_jerry/">Catch Jerry</a>
+# <a href="https://evieeee123.github.io/catch_jerry/" target="_blank">Catch Jerry</a>
 
-<a href="https://evieeee123.github.io/catch_jerry/">Catch Jerry</a> is a game based on the click event. Jerry will show up on different spots randomly with random speed. The player will get point once the player clicks on the Jerry and let Tom make collision with Jerry. And it will get 1 more sec for you to play. Each round of the game lasts for 20 seconds, but it will get 1 more sec for you to play for each Jerry you catch. There are two ways to trigger the game over. On the one hand, game over when time's over. On the other hand, game over if the player let Tom make collision with dog. There is a funtionality for you to keep track of your highest score. Try to get more points and have fun!
+<a href="https://evieeee123.github.io/catch_jerry/" target="_blank">Catch Jerry</a> is a game based on the click event. Jerry will show up on different spots randomly with random speed. The player will get point once the player clicks on the Jerry and let Tom make collision with Jerry. And it will get 1 more sec for you to play. Each round of the game lasts for 20 seconds, but it will get 1 more sec for you to play for each Jerry you catch. There are two ways to trigger the game over. On the one hand, game over when time's over. On the other hand, game over if the player let Tom make collision with dog. There is a funtionality for you to keep track of your highest score. Try to get more points and have fun!
 
 <img src="https://github.com/evieeee123/catch_jerry/blob/main/img/game-screenshot%20.png" width="700" heigh="300">
 
@@ -22,6 +22,7 @@ Created Using JavaScript, Canvas, HTML & CSS
 
 <h2>Technical implementation details</h2>
 Use atan2 to calculate the angel between Tom and mouse.
+
 ```node
 // update Tom position to move Tom toward the mouse
     update(mousex, mousey) {
