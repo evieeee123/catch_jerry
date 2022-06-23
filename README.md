@@ -1,10 +1,10 @@
-# catch-jerry
+# <a href="https://evieeee123.github.io/catch_jerry/">Catch Jerry</a>
 
-Catch Jerry is a game based on the click event. Jerry will show up on different spots randomly with random speed. The player will get point once the player clicks on the Jerry and let Tom make collision with Jerry. And it will get 1 more sec for you to play. Each round of the game lasts for 20 seconds, but it will get 1 more sec for you to play for each Jerry you catch. There are two ways to trigger the game over. On the one hand, game over when time's over. On the other hand, game over if the player let Tom make collision with dog. There is a funtionality for you to keep track of your highest score. Try to get more points and have fun!
+<a href="https://evieeee123.github.io/catch_jerry/">Catch Jerry</a> is a game based on the click event. Jerry will show up on different spots randomly with random speed. The player will get point once the player clicks on the Jerry and let Tom make collision with Jerry. And it will get 1 more sec for you to play. Each round of the game lasts for 20 seconds, but it will get 1 more sec for you to play for each Jerry you catch. There are two ways to trigger the game over. On the one hand, game over when time's over. On the other hand, game over if the player let Tom make collision with dog. There is a funtionality for you to keep track of your highest score. Try to get more points and have fun!
 
-<img src="https://github.com/evieeee123/whack_mole/blob/main/img/wireframe.png">
+<img src="https://github.com/evieeee123/catch_jerry/blob/main/img/game-screenshot%20.png" width="700" heigh="300">
 
-<h1>Functionality & MVPs</h1>
+<h2>Functionality & MVPs</h2>
 
 <ul>
     <li>Button for the player to start the game</li>
@@ -17,11 +17,12 @@ Catch Jerry is a game based on the click event. Jerry will show up on different 
 </ul>
 
 
-<h1>Technologies, Libraries, APIs</h1>
+<h2>Technologies, Libraries, APIs</h2>
 Created Using JavaScript, Canvas, HTML & CSS
 
-<h1>Technical implementation details</h1>
+<h2>Technical implementation details</h2>
 Use atan2 to calculate the angel between Tom and mouse.
+```node
 // update Tom position to move Tom toward the mouse
     update(mousex, mousey) {
         // compare Tom's crrent position and mouse current position
@@ -38,8 +39,9 @@ Use atan2 to calculate the angel between Tom and mouse.
             this.y -= dy / 6;
         }
     }
+```
 
-<h1>Upcoming Features</h1>
+<h2>Upcoming Features</h2>
     <li>Top 10 high scores list</li>
     <li>Get different points form different Jerry</li>
     <li>Separate into different level</li>
