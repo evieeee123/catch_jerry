@@ -27,11 +27,11 @@ let highScore = 0;
 // save key for local storage of score
 let saveHighScore = 'highestscore';
 let highScoreStr = localStorage.getItem(saveHighScore);
-if (highScoreStr === null){
-    highScore;
-}else {
+// if (highScoreStr === null){
+    // highScore;
+// }else {
     highScore = parseInt(highScoreStr);
-}
+// }
 let time = 20;
 let gameFrame = 110;
 let isGameover = false;
@@ -63,17 +63,14 @@ const timer = document.querySelector('#start-button');
 timer.addEventListener('click', () => {
     let interval = setInterval(() => {
         time--;
-        console.log(time)
         if(time <= 0){
             isGameover = true;
-            console.log(isGameover);
         }
     }, 1000);
     
     
     function stop(){
         clearInterval(interval);
-        // alert('Game Over: your score is ' + score)
     }
     
 
@@ -109,9 +106,9 @@ const catchJerry = document.createElement('audio');
 catchJerry.src = './audio/catch-jerry.mp3'
 
 function handleJerry(){
-    // run this code every 130 frames
+    // run this code every 110 frames
     if (gameFrame % 110 === 0){
-        // each 130 frame show up a jerry
+        // each 110 frame show up a jerry
         jerryArr.push(new Jerry(ctx));
     }
     for(let i = 0; i < jerryArr.length; i++){
@@ -148,37 +145,28 @@ const dogArr = [];
 const catchDog = document.createElement('audio');
 catchDog.src = './audio/dog-sound.mp3'
 function handleDog() {
-    // run this code every 130 frames
     if (gameFrame % 200 === 0) {
-        // each 130 frame show up a jerry
         dogArr.push(new Dog(ctx));
     }
     for (let i = 0; i < dogArr.length; i++) {
-        // iterate through the jerry and draw one by one
         dogArr[i].update(player.x, player.y);
         dogArr[i].draw();
-        // when dog run out of the canvas and tom didn't catch it do (also prevent dog disappear early when hit the boarder):
         if (dogArr[i].x < 0 - dogArr[i].radius) {
-            // remove that jerry from the array
             dogArr.splice(i, 1);
             i--;
-            // check the distance between Tom and jerry
         } else if (dogArr[i].distance < dogArr[i].radius + player.radius) {
-            // make every jerry only count once
-            // play the sound
             catchDog.play();
-            // remove jerry once be catched
             isGameover = true;
         }
     }
 }
 
-// for play button to reload the page
+// for start button to reload the page
 timer.addEventListener('click', () => {
         window.location.reload();
     })
 
-// Animation
+// Animate
 function animate() {
     // erases the entire canvas from old paint between every animation frame
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -206,7 +194,7 @@ function animate() {
         ctx.fillText('Your score: ' + score, 300, 260);
         stop();
     }
-    
+    // keep track of the highest score
     if (score > highScore){
         highScore = score;
         localStorage.setItem(saveHighScore, highScore)
@@ -235,7 +223,7 @@ window.addEventListener('mouseup', () => {
     cursor.classList.remove('active')
 })
 
-
+// background music
 let bgMusic = document.getElementById('background_music');
 let icon = document.getElementById('music-icon');
 

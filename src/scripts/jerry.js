@@ -24,22 +24,14 @@ export default class Jerry {
         this.distance = Math.sqrt(dx * dx + dy * dy)
     }
     draw() {
-        // ctx.fillStyle = 'blue';
-        // ctx.beginPath();
-        // ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        // ctx.fill();
-        // ctx.closePath();
-        // ctx.stroke();
         if (this.jerry <= 0.4) {
             this.ctx.drawImage(this.jerry1, this.x - 30, this.y - 30, 65, 65);
-            console.log("jerry1")
         } else {
             this.ctx.drawImage(this.jerry2, this.x - 30, this.y - 30, 58, 58);
-            console.log("jerry2")
-
         }
     }
 }
+
 function getRandomNum(min, max){
     return Math.random() * (max - min) + min;
 }
