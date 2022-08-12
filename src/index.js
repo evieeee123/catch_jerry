@@ -27,11 +27,13 @@ let highScore = 0;
 // save key for local storage of score
 let saveHighScore = 'highestscore';
 let highScoreStr = localStorage.getItem(saveHighScore);
-// if (highScoreStr === null){
-    // highScore;
-// }else {
+
+if (highScoreStr === null){
+    highScore;
+}else {
     highScore = parseInt(highScoreStr);
-// }
+}
+
 let time = 20;
 let gameFrame = 110;
 let isGameover = false;
@@ -128,7 +130,7 @@ function handleJerry(){
                     catchJerry.play();
                     score++;
                     time += 1;
-                    ctx.drawImage(jerry0, jerryArr[i].x, jerryArr[i].y, 65, 65)
+                    // ctx.drawImage(jerry0, jerryArr[i].x, jerryArr[i].y, 65, 65)
                     jerryArr[i].counted = true;
                     // remove jerry once be catched
                     jerryArr.splice(i, 1);
@@ -229,11 +231,11 @@ let icon = document.getElementById('music-icon');
 
 icon.addEventListener('click', () => {
     if (bgMusic.paused){
-        bgMusic.play();
         icon.src = './img/music_on.png'
+        bgMusic.play();
     }else {
-        bgMusic.pause();
         icon.src = './img/music_off.png'
+        bgMusic.pause();
     }
 
 })

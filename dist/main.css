@@ -49,6 +49,10 @@
     padding: 8px;
 }
 
+.window1-body-text{
+    max-width: 400px;
+}
+
 #overlay {
     position: fixed;
     transition: 200ms ease-in-out;
