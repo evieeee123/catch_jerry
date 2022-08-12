@@ -44,6 +44,8 @@ h1{
     flex-direction: row;
     width: 45px;
     height: 45px;
+    min-width: 180px;
+    justify-content: space-between;
 }
 
 #first-icon {
@@ -74,6 +76,8 @@ h1{
     flex-direction: row;
     width: 45px;
     height: 45px;
+    min-width: 130px;
+    justify-content: space-between;
 }
 
 .cursor {
