@@ -115,17 +115,19 @@ h1 {
   flex-direction: row;
   width: 45px;
   height: 45px;
+  min-width: 180px;
+  justify-content: space-between;
 }
 
 #first-icon {
-  margin-right: 50%;
+  /* margin-right: 50%; */
   width: 45px;
   height: 45px;
 }
 
 .middle {
   height: 45px;
-  margin-left: 20%;
+  /* margin-left: 20%; */
 }
 
 #start-button {
@@ -144,6 +146,8 @@ h1 {
   flex-direction: row;
   width: 45px;
   height: 45px;
+  min-width: 130px;
+  justify-content: space-between;
 }
 
 .cursor {
@@ -178,7 +182,7 @@ h1 {
 #git-icon {
   width: 45px;
   height: 45px;
-  margin-left: 200%;
+  /* margin-left: 200%; */
 }
 
 #last-icon {

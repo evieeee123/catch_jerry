@@ -32,7 +32,7 @@ h1{
 .button-bar{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     margin-left: 18.5%;
     margin-right: 18.5%;
@@ -47,14 +47,14 @@ h1{
 }
 
 #first-icon {
-    margin-right: 50%;
+    // margin-right: 50%;
     width: 45px;
     height: 45px;
 }
 
 .middle{
     height: 45px;
-    margin-left: 20%;
+    // margin-left: 20%;
 }
 
 #start-button{
@@ -108,7 +108,7 @@ h1{
 #git-icon{
     width: 45px;
     height: 45px;
-    margin-left: 200%;
+    // margin-left: 200%;
 }
 
 #last-icon{
