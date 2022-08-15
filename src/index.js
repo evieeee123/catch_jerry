@@ -188,7 +188,6 @@ function animate() {
     // create a loop; animate another frame at the next repaint
     if(isGameover === false){
         requestAnimationFrame(animate);
-        console.log("runing")
     } else{
         cancelAnimationFrame(animate);
         ctx.fillStyle = 'brown';
